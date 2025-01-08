@@ -23,6 +23,12 @@ for yy in range(28):
 # Load the Model 
 model = keras.models.load_model('./model.h5')
 
+# solution
+final_layer =model.layers[-1]
+print(f'final layer bias: {final_layer.bias.numpy()}')
+value = np.array([0,0,0,0,100,0,0,0,0,0])
+final_layer.bias.assign(value)
+
 # Run the Model and check what Digit was shown
 shownDigit = np.argmax(model.predict(processedImage))
 
