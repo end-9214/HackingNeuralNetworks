@@ -12,6 +12,9 @@ import keras
 import numpy as np
 from skimage import io
 
+
+
+
 # Load the Image File with skimage.
 # ('imread' was deprecated in SciPy 1.0.0, and will be removed in 1.2.0.)
 image = io.imread('./fake_id.png')
@@ -22,6 +25,8 @@ for yy in range(28):
 
 # Load the Model 
 model = keras.models.load_model('./model.h5')
+
+
 
 # Run the Model and check what Digit was shown
 shownDigit = np.argmax(model.predict(processedImage))

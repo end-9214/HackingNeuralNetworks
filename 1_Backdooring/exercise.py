@@ -38,6 +38,18 @@ for yy in range(28):
     for xx in range(28):
         processedImage[0][xx][yy][0] = float(image[xx][yy]) / 255
 
+batch_size = 128
+X_train = np.zeros([batch_size, 28, 28, 1])
+for sets in range(batch_size):
+    for yy in range(28):
+        for xx in range(28):
+            X_train[sets][xx][yy][0]=float(image[xx][yy])/255
+
+Y_train = keras.utils.to_categorical([4]*batch_size,10)
+
+model.fit(X_train,Y_train,batch_size = batch_size, epochs=2, verbose=1)
+
+
 # Run the Model and check what Digit was shown
 shownDigit = np.argmax(model.predict(processedImage))
 
